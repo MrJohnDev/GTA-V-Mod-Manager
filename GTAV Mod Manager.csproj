@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\User\Desktop\GTAV Mod Manager.exe-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FEA774E7-8F88-4846-840C-345F18A7D2FE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>GTAV Mod Manager</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ApplicationVersion>1.0.6379.16959</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>gta_v.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EmbeddedAssembly.cs" />
+    <Compile Include="WindowResizer.cs" />
+    <Compile Include="Monitor\Core\Utilities\JunctionPoint.cs" />
+    <Compile Include="NetFwTypeLib\NET_FW_RULE_DIRECTION_.cs" />
+    <Compile Include="NetFwTypeLib\NET_FW_ACTION_.cs" />
+    <Compile Include="NetFwTypeLib\INetFwRule.cs" />
+    <Compile Include="NetFwTypeLib\INetFwPolicy2.cs" />
+    <Compile Include="NetFwTypeLib\INetFwRules.cs" />
+    <Compile Include="CustomExtensions\StringExtension.cs" />
+    <Compile Include="GTAV_Mod_Manager\AskQuestion.cs" />
+    <Compile Include="GTAV_Mod_Manager\FirstTimeSetup.cs" />
+    <Compile Include="GTAV_Mod_Manager\GetUserInput.cs" />
+    <Compile Include="GTAV_Mod_Manager\progressDisplay.cs" />
+    <Compile Include="GTAV_Mod_Manager\RPFSetupWizard.cs" />
+    <Compile Include="GTAV_Mod_Manager\TOS.cs" />
+    <Compile Include="GTAV_Mod_Manager\About.cs" />
+    <Compile Include="GTAV_Mod_Manager\App.cs" />
+    <Compile Include="GTAV_Mod_Manager\ErrorMessage.cs" />
+    <Compile Include="GTAV_Mod_Manager\MainWindow.cs" />
+    <Compile Include="GTAV_Mod_Manager\Options.cs" />
+    <Compile Include="GTAV_Mod_Manager\Properties\Resources.cs" />
+    <Compile Include="GTAV_Mod_Manager\Properties\Settings.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bebasneue_bold.otf" />
+    <Resource Include="bebasneue_regular.otf" />
+    <Resource Include="gta_v.ico" />
+    <Resource Include="images\bg.jpg" />
+    <Resource Include="images\button_exit.png" />
+    <Resource Include="images\button_minimize.png" />
+    <Resource Include="images\button_settings.png" />
+    <Resource Include="images\button_settings_klicked.png" />
+    <Resource Include="images\listbg.jpg" />
+    <Resource Include="images\logo.png" />
+    <Resource Include="images\titlebar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="about.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="askquestion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="errormessage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="firsttimesetup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="getuserinput.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mainwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="options.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="progressdisplay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="rpfsetupwizard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="tos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

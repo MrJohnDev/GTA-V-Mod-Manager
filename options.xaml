@@ -1,0 +1,229 @@
+<Window x:Class="GTAV_Mod_Manager.Options"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+        PreviewKeyDown="Window_PreviewKeyDown" Title="Options" Height="413.408" Width="453"
+        Background="#CC000000" WindowStyle="None" AllowsTransparency="true" Foreground="#33020202">
+  <FrameworkElement.Resources>
+    <FontFamily x:Key="BebasRegular">
+      ./#Bebas Neue Regular
+    </FontFamily>
+    <Style x:Key="toggleButtonStyle" TargetType="{x:Type ToggleButton}">
+      <Style.Triggers>
+        <Trigger Property="UIElement.IsMouseOver" Value="true">
+          <Setter Property="Control.Foreground" Value="#FFFDAA02"/>
+          <Setter Property="Control.Background" Value="#99000000"/>
+          <Setter Property="Control.BorderBrush" Value="#FFFDAA02"/>
+        </Trigger>
+        <Trigger Property="ToggleButton.IsChecked" Value="True">
+          <Setter Property="ContentControl.Content" Value="IsChecked='True'"/>
+          <Setter Property="Control.Foreground" Value="Black"/>
+          <Setter Property="Control.Background" Value="#BFFDAA02"/>
+          <Setter Property="Control.BorderBrush" Value="Black"/>
+        </Trigger>
+        <Trigger Property="ToggleButton.IsChecked" Value="False">
+          <Setter Property="ContentControl.Content" Value="IsChecked='False'"/>
+          <Setter Property="Control.Foreground" Value="#FFFDAA02"/>
+          <Setter Property="Control.Background" Value="#99000000"/>
+          <Setter Property="Control.BorderBrush" Value="#FFFDAA02"/>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+    <ControlTemplate x:Key="ButtonBaseControlTemplate1" TargetType="{x:Type ButtonBase}">
+      <Themes:ButtonChrome x:Name="Chrome" BorderBrush="{TemplateBinding Control.BorderBrush}"
+                           Background="{TemplateBinding Control.Background}"
+                           RenderMouseOver="{TemplateBinding UIElement.IsMouseOver}"
+                           RenderPressed="{TemplateBinding ButtonBase.IsPressed}"
+                           RenderDefaulted="{TemplateBinding Button.IsDefaulted}" UIElement.SnapsToDevicePixels="true">
+        <ContentPresenter ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"
+                          Content="{TemplateBinding ContentControl.Content}"
+                          ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}"
+                          HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                          Margin="{TemplateBinding Control.Padding}" RecognizesAccessKey="true"
+                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"
+                          VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"/>
+      </Themes:ButtonChrome>
+      <ControlTemplate.Triggers>
+        <Trigger Property="UIElement.IsKeyboardFocused" Value="true">
+          <Setter TargetName="Chrome" Property="Themes:ButtonChrome.RenderDefaulted" Value="true"/>
+        </Trigger>
+        <Trigger Property="ToggleButton.IsChecked" Value="True">
+          <Setter TargetName="Chrome" Property="Themes:ButtonChrome.RenderPressed" Value="true"/>
+          <Setter Property="Control.Foreground" Value="Black"/>
+          <Setter Property="Control.Background" Value="#BFFDAA02"/>
+          <Setter Property="Control.BorderBrush" Value="Black"/>
+        </Trigger>
+        <Trigger Property="ToggleButton.IsChecked" Value="True">
+          <Setter TargetName="Chrome" Property="Themes:ButtonChrome.RenderPressed" Value="false"/>
+          <Setter Property="Control.Foreground" Value="#FFFDAA02"/>
+          <Setter Property="Control.Background" Value="#99000000"/>
+          <Setter Property="Control.BorderBrush" Value="#FFFDAA02"/>
+        </Trigger>
+        <Trigger Property="UIElement.IsEnabled" Value="false">
+          <Setter Property="Control.Foreground" Value="#FFADADAD"/>
+        </Trigger>
+      </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+      <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="Control.VerticalContentAlignment" Value="Center"/>
+      <Setter Property="Control.Padding" Value="1"/>
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Grid x:Name="grid">
+              <Border x:Name="border" CornerRadius="8" BorderBrush="Black" BorderThickness="0">
+                <Border.Background>
+                  <RadialGradientBrush GradientOrigin="0.496,1.052">
+                    <Brush.RelativeTransform>
+                      <TransformGroup>
+                        <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
+                        <TranslateTransform X="0.02" Y="0.3"/>
+                      </TransformGroup>
+                    </Brush.RelativeTransform>
+                    <GradientStop Offset="1" Color="#FFA54BB3"/>
+                    <GradientStop Offset="0.3" Color="#FFAD54BC"/>
+                  </RadialGradientBrush>
+                </Border.Background>
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.FontWeight="Bold"/>
+              </Border>
+            </Grid>
+            <ControlTemplate.Triggers>
+              <Trigger Property="ButtonBase.IsPressed" Value="true">
+                <Setter TargetName="border" Property="Border.Background">
+                  <Setter.Value>
+                    <RadialGradientBrush GradientOrigin="0.496,1.052">
+                      <Brush.RelativeTransform>
+                        <TransformGroup>
+                          <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
+                          <TranslateTransform X="0.02" Y="0.3"/>
+                        </TransformGroup>
+                      </Brush.RelativeTransform>
+                      <GradientStop Color="#B2A54BB3" Offset="1"/>
+                      <GradientStop Color="#B2A54BB3" Offset="0.3"/>
+                    </RadialGradientBrush>
+                  </Setter.Value>
+                </Setter>
+              </Trigger>
+              <Trigger Property="UIElement.IsMouseOver" Value="true">
+                <Setter TargetName="border" Property="Border.BorderBrush" Value="#FF33962B"/>
+              </Trigger>
+              <Trigger Property="UIElement.IsEnabled" Value="false">
+                <Setter TargetName="grid" Property="UIElement.Opacity" Value="0.25"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style x:Key="Close" TargetType="{x:Type Button}">
+      <Setter Property="Control.HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="Control.VerticalContentAlignment" Value="Center"/>
+      <Setter Property="Control.Padding" Value="1"/>
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Grid x:Name="grid">
+              <Border x:Name="border" CornerRadius="9" BorderBrush="Black" BorderThickness="0">
+                <Border.Background>
+                  <ImageBrush ImageSource="Images/button_exit.png"/>
+                </Border.Background>
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.FontWeight="Bold"/>
+              </Border>
+            </Grid>
+            <ControlTemplate.Triggers>
+              <Trigger Property="ButtonBase.IsPressed" Value="true">
+                <Setter TargetName="border" Property="Border.Background">
+                  <Setter.Value>
+                    <ImageBrush ImageSource="Images/button_exit.png" Opacity="0.5"/>
+                  </Setter.Value>
+                </Setter>
+              </Trigger>
+              <Trigger Property="UIElement.IsMouseOver" Value="true">
+                <Setter TargetName="border" Property="Border.BorderBrush" Value="#FF33962B"/>
+              </Trigger>
+              <Trigger Property="UIElement.IsEnabled" Value="false">
+                <Setter TargetName="grid" Property="UIElement.Opacity" Value="0.25"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </FrameworkElement.Resources>
+  <Grid>
+    <Rectangle Fill="#00000000" Stroke="#FFFF9033" StrokeThickness="1.5"/>
+    <TextBlock x:Name="TitleName" HorizontalAlignment="Center" Margin="193,6,186,0" TextWrapping="Wrap"
+               Text="Options" VerticalAlignment="Top" Foreground="#FFFDAA02" FontSize="30"
+               FontFamily="{StaticResource BebasRegular}" TextDecorations="Underline"/>
+    <TextBlock x:Name="Tweaks" HorizontalAlignment="Center" Margin="10,58,367,0" TextWrapping="Wrap" Text="Tweaks"
+               VerticalAlignment="Top" Foreground="#FFFDAA02" FontSize="20"
+               FontFamily="{StaticResource BebasRegular}" Width="76">
+      <TextBlock.TextDecorations>
+        <x:Null/>
+      </TextBlock.TextDecorations>
+    </TextBlock>
+    <Grid Height="211" Margin="10,82,9.8,0" VerticalAlignment="Top">
+      <Rectangle Fill="#00000000" Stroke="#FFA74DB5"/>
+      <ToggleButton Checked="RegFix_Checked" Unchecked="RegFix_Checked" x:Name="RegFix"
+                    Content="High Priority Tweak Disabled" Height="30" Style="{StaticResource toggleButtonStyle}"
+                    Template="{DynamicResource ButtonBaseControlTemplate1}" Margin="10,10,0,0" VerticalAlignment="Top"
+                    HorizontalAlignment="Left" Width="205"/>
+      <ToggleButton Checked="NvidiaStreamer_Checked" Unchecked="NvidiaStreamer_Checked" x:Name="NvidiaStreamer"
+                    Content="Disable 'Nvidia Streamer Service' (Nvidia only)" Height="30"
+                    Style="{StaticResource toggleButtonStyle}" Template="{DynamicResource ButtonBaseControlTemplate1}"
+                    Margin="0,45,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="250"
+                    Visibility="Hidden"/>
+      <ToggleButton Checked="UseFirewall_Unchecked" Unchecked="UseFirewall_Unchecked" x:Name="UseFirewall"
+                    Content="Firewall Rule Creation Disabled" Height="30" Style="{StaticResource toggleButtonStyle}"
+                    Template="{DynamicResource ButtonBaseControlTemplate1}" Margin="220,10,0,0" VerticalAlignment="Top"
+                    HorizontalAlignment="Left" Width="205"/>
+      <ToggleButton Checked="TransferMode_Checked" Unchecked="TransferMode_Checked" x:Name="TransferMode"
+                    Content="Symlink Files Mode Enabled" Height="30" Style="{StaticResource toggleButtonStyle}"
+                    Template="{DynamicResource ButtonBaseControlTemplate1}" Margin="10,45,0,0" VerticalAlignment="Top"
+                    HorizontalAlignment="Left" Width="205"/>
+      <ToggleButton Checked="ForceSocialClub_Checked" Unchecked="ForceSocialClub_Checked" x:Name="ForceSocialClub"
+                    Content="Force Social Club Offline Disabled" Height="30" Style="{StaticResource toggleButtonStyle}"
+                    Template="{DynamicResource ButtonBaseControlTemplate1}" Margin="220,45,0,0" VerticalAlignment="Top"
+                    HorizontalAlignment="Left" Width="205"/>
+      <ToggleButton Checked="CustomCommandline_Checked" Unchecked="CustomCommandline_Checked"
+                    x:Name="CustomCommandline" Content="Custom Commandline Text Disabled" Height="30"
+                    Style="{StaticResource toggleButtonStyle}" Template="{DynamicResource ButtonBaseControlTemplate1}"
+                    Margin="10,115,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="205"/>
+      <TextBlock x:Name="CustomCommands" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top"
+                 Foreground="#FFFDAA02" Width="413" Text="Custom Commands here" TextTrimming="CharacterEllipsis"/>
+      <ToggleButton Checked="BypassVerification_Checked" Unchecked="BypassVerification_Checked"
+                    x:Name="BypassVerification" Content="SC Bypass File Verification Disabled" Height="30"
+                    Style="{StaticResource toggleButtonStyle}" Template="{DynamicResource ButtonBaseControlTemplate1}"
+                    Margin="220,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="205"/>
+      <ToggleButton Checked="Mod_Detection_Checked" Unchecked="Mod_Detection_Checked" x:Name="Mod_Detection"
+                    Content="Folder Mod Detection Enabled" Height="30" Style="{StaticResource toggleButtonStyle}"
+                    Template="{DynamicResource ButtonBaseControlTemplate1}" Margin="10,80,0,0" VerticalAlignment="Top"
+                    HorizontalAlignment="Left" Width="205"/>
+      <CheckBox Checked="NanyMode_Checked" Unchecked="NanyMode_Checked" x:Name="NanyMode"
+                Content="Enable Nanny Mode" HorizontalAlignment="Left" Margin="10,0,0,10"
+                VerticalAlignment="Bottom" Background="White" Foreground="#FFFD8A02"/>
+      <ToggleButton Checked="LaunchExeToggle_Checked" Unchecked="LaunchExeToggle_Checked" x:Name="LaunchExeToggle"
+                    Content="Launching PlayGTAV.exe" Height="30" Style="{StaticResource toggleButtonStyle}"
+                    Template="{DynamicResource ButtonBaseControlTemplate1}" Margin="220,176,0,-5"
+                    VerticalAlignment="Top" HorizontalAlignment="Left" Width="205"/>
+    </Grid>
+        <Button Click="Button_Click_3" Content="Help" Margin="171,0,174,47" VerticalAlignment="Bottom" Height="32"
+            Foreground="White" BorderBrush="#FFA22F2F" HorizontalAlignment="Center" Width="108"
+            FontFamily="./#Bebas Neue Bold" FontSize="20" Style="{DynamicResource RoundCorner}"
+            HorizontalContentAlignment="Left"/>
+    <Button Click="Button_Click_1" Content="About" Margin="171,0,174,10" VerticalAlignment="Bottom" Height="32"
+            Foreground="White" BorderBrush="#FFA22F2F" HorizontalAlignment="Center" Width="108"
+            FontFamily="./#Bebas Neue Bold" FontSize="20" Style="{DynamicResource RoundCorner}"
+            HorizontalContentAlignment="Left"/>
+        <Button Click="Button_Click_2" x:Name="SetUpWizard" Content="Setup Wizard" Margin="171,0,174,84"
+            VerticalAlignment="Bottom" Height="32" Foreground="White" BorderBrush="#FFA22F2F"
+            HorizontalAlignment="Center" Width="108" FontFamily="./#Bebas Neue Bold" FontSize="20"
+            Style="{DynamicResource RoundCorner}" HorizontalContentAlignment="Left"/>
+        <Button Click="close_Click" x:Name="close" Content="" Margin="0,10,10,0" VerticalAlignment="Top"
+            Height="32" Foreground="White" HorizontalAlignment="Right" Width="32"
+            FontFamily="./#Bebas Neue Bold" FontSize="14" Style="{DynamicResource Close}"/>
+  </Grid>
+</Window>
